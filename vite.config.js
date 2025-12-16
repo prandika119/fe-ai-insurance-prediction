@@ -1,0 +1,15 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vite.dev/config/
+export default defineConfig({
+    plugins: [react()],
+    server: {
+        proxy: {
+            "/api": {
+                target: "https://web-production-7987.up.railway.app", // Update this to your API server URL
+                changeOrigin: true,
+            },
+        },
+    },
+});

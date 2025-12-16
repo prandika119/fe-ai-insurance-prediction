@@ -1,0 +1,263 @@
+UAS_PSD
+POSTregister
+/api/register
+Bodyraw (json)
+json
+
+{
+    "username": "tester",
+    "email": "user@user.com",
+    "password": "password123",
+    "full_name": "Tester UAS" 
+}
+
+Example Request
+register
+curl
+
+curl --location '/api/register' \
+--data-raw '{
+    "username": "tester",
+    "email": "user@user.com",
+    "password": "password123",
+    "full_name": "Tester UAS" 
+}'
+
+201 CREATED
+Example Response
+
+{
+  "message": "Pendaftaran berhasil!",
+  "status": "success",
+  "user_id": 2,
+  "username": "tester"
+}
+
+POSTlogin
+/api/login
+Bodyraw (json)
+json
+
+{
+    "username": "tester",
+    "password": "password123"
+}
+
+Example Request
+login
+curl
+
+curl --location '/api/login' \
+--data '{
+    "username": "tester",
+    "password": "password123"
+}'
+
+200 OK
+Example Response
+
+{
+  "message": "Login berhasil!",
+  "status": "success",
+  "token": "3b4d303e-a7d9-4ae7-93ef-b32e1e76c1b8",
+  "user_id": 2,
+  "username": "tester"
+}
+
+POSTpredict
+/api/predict
+AUTHORIZATIONBearer Token
+Token
+Bodyraw (json)
+json
+
+{
+    "age": 30,
+    "bmi": 28.5,
+    "children": 2,
+    "sex": "male",
+    "smoker": "no",
+    "region": "northwest"
+}
+
+Example Request
+predict
+curl
+
+curl --location '/api/predict' \
+--data '{
+    "age": 30,
+    "bmi": 28.5,
+    "children": 2,
+    "sex": "male",
+    "smoker": "no",
+    "region": "northwest"
+}'
+
+200 OK
+Example Response
+
+{
+  "history_id": 4,
+  "input_summary": {
+    "age": 30,
+    "bmi": 28.5,
+    "children": 2,
+    "region": "northwest",
+    "sex": "male",
+    "smoker": "no"
+  },
+  "message": "Prediksi berhasil!",
+  "predicted_charges": 5412.069488408581,
+  "predicted_charges_formatted": "$5,412.07",
+  "status": "success"
+}
+
+GETread profile
+/api/profile
+AUTHORIZATIONBearer Token
+Token
+Example Request
+read profile
+curl
+
+curl --location '/api/profile' \
+--data ''
+
+200 OK
+Example Response
+
+{
+  "data": {
+    "email": "user@user.com",
+    "full_name": "Tester UAS",
+    "id": 2,
+    "username": "tester"
+  },
+  "message": "Profil berhasil diambil!",
+  "status": "success"
+}
+
+
+PUTupdate profile
+/api/profile
+AUTHORIZATIONBearer Token
+Token
+Bodyraw (json)
+json
+
+{
+    "full_name": "User22",
+    "email": "user@user22.com"
+}
+
+Example Request
+update profile
+curl
+
+curl --location --request PUT '/api/profile' \
+--data-raw '{
+    "full_name": "User22",
+    "email": "user@user22.com"
+}'
+
+200 OK
+Example Response
+
+{
+  "data": {
+    "email": "user@user22.com",
+    "full_name": "User22",
+    "id": 2,
+    "username": "tester"
+  },
+  "message": "Profil berhasil diperbarui!",
+  "status": "success"
+}
+
+GETread history
+/api/history
+AUTHORIZATIONBearer Token
+Token
+Example Request
+read history
+curl
+
+curl --location '/api/history' \
+--data ''
+
+200 OK
+Example Response
+
+{
+  "data": [
+    {
+      "charges": "$5,412.07",
+      "date": "2025-12-15T07:03:28.093398",
+      "id": 4,
+      "input": {
+        "age": 30,
+        "children": 2,
+        "region": "northwest",
+        "sex": "male",
+        "smoker": "no"
+      },
+      "predicted_charges_raw": 5412.069488408581
+    }
+  ],
+  "message": "Riwayat prediksi berhasil diambil!",
+  "pagination": {
+    "page": 1,
+    "per_page": 10,
+    "total": 1,
+    "total_pages": 1
+  },
+  "status": "success"
+}
+
+GETdashboard
+/api/dashboard
+AUTHORIZATIONBearer Token
+Token
+Example Request
+dashboard
+curl
+
+curl --location '/api/dashboard' \
+--data ''
+
+200 OK
+Example Response
+
+{
+  "global_stats": {
+    "average_charges_global": "$5,412",
+    "sex_distribution": {
+      "male": "100.0%"
+    },
+    "smoker_distribution": {
+      "no": "100.0%"
+    },
+    "top_region": "northwest",
+    "total_global_predictions": 4
+  },
+  "message": "Dashboard berhasil dimuat!",
+  "status": "success",
+  "user_data": {
+    "accuracy_model": "88.0%",
+    "average_charges_user": "$5,412",
+    "full_name": "User22",
+    "last_updated": "15 Dec 2025, 14:10",
+    "latest_activities": [
+      {
+        "age": 30,
+        "charges": "$5,412",
+        "date": "15 Dec 2025, 07:03",
+        "id": 4
+      }
+    ],
+    "system_status": "Online",
+    "total_predictions_user": 1,
+    "username": "tester"
+  }
+}
