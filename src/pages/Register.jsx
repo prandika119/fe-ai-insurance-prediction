@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -53,7 +55,10 @@ const Register = () => {
                 {/* Logo Section */}
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600 rounded-full mb-4">
-                        <span className="text-3xl">✨</span>
+                        <FontAwesomeIcon
+                            icon={faUserPlus}
+                            className="text-3xl text-white"
+                        />
                     </div>
                     <h1 className="text-3xl font-bold text-gray-900">
                         Create Account

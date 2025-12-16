@@ -2,6 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../utils/axios";
 import Layout from "../components/Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faCakeCandles,
+    faWeightScale,
+    faBaby,
+    faMars,
+    faVenus,
+    faSmoking,
+    faBan,
+    faEarthAmericas,
+    faWandMagicSparkles,
+    faClockRotateLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Predict = () => {
     const navigate = useNavigate();
@@ -88,7 +101,11 @@ const Predict = () => {
                                     htmlFor="age"
                                     className="block text-sm font-semibold text-gray-700 mb-2"
                                 >
-                                    Usia (Tahun) 🎂
+                                    <FontAwesomeIcon
+                                        icon={faCakeCandles}
+                                        className="mr-2"
+                                    />
+                                    Usia (Tahun)
                                 </label>
                                 <input
                                     type="number"
@@ -110,7 +127,11 @@ const Predict = () => {
                                     htmlFor="bmi"
                                     className="block text-sm font-semibold text-gray-700 mb-2"
                                 >
-                                    BMI (Body Mass Index) ⚖️
+                                    <FontAwesomeIcon
+                                        icon={faWeightScale}
+                                        className="mr-2"
+                                    />
+                                    BMI (Body Mass Index)
                                 </label>
                                 <input
                                     type="number"
@@ -136,7 +157,11 @@ const Predict = () => {
                                     htmlFor="children"
                                     className="block text-sm font-semibold text-gray-700 mb-2"
                                 >
-                                    Jumlah Anak 👶
+                                    <FontAwesomeIcon
+                                        icon={faBaby}
+                                        className="mr-2"
+                                    />
+                                    Jumlah Anak
                                 </label>
                                 <input
                                     type="number"
@@ -155,7 +180,7 @@ const Predict = () => {
                             {/* Sex */}
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                                    Jenis Kelamin 👤
+                                    Jenis Kelamin
                                 </label>
                                 <div className="grid grid-cols-2 gap-3">
                                     <label
@@ -173,9 +198,10 @@ const Predict = () => {
                                             onChange={handleChange}
                                             className="sr-only"
                                         />
-                                        <span className="text-2xl mr-2">
-                                            👨
-                                        </span>
+                                        <FontAwesomeIcon
+                                            icon={faMars}
+                                            className="text-2xl mr-2"
+                                        />
                                         <span className="font-medium">
                                             Pria
                                         </span>
@@ -195,9 +221,10 @@ const Predict = () => {
                                             onChange={handleChange}
                                             className="sr-only"
                                         />
-                                        <span className="text-2xl mr-2">
-                                            👩
-                                        </span>
+                                        <FontAwesomeIcon
+                                            icon={faVenus}
+                                            className="text-2xl mr-2"
+                                        />
                                         <span className="font-medium">
                                             Wanita
                                         </span>
@@ -208,7 +235,7 @@ const Predict = () => {
                             {/* Smoker */}
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                                    Status Perokok 🚬
+                                    Status Perokok
                                 </label>
                                 <div className="grid grid-cols-2 gap-3">
                                     <label
@@ -226,9 +253,10 @@ const Predict = () => {
                                             onChange={handleChange}
                                             className="sr-only"
                                         />
-                                        <span className="text-2xl mr-2">
-                                            🚬
-                                        </span>
+                                        <FontAwesomeIcon
+                                            icon={faSmoking}
+                                            className="text-2xl mr-2"
+                                        />
                                         <span className="font-medium">Ya</span>
                                     </label>
                                     <label
@@ -246,9 +274,10 @@ const Predict = () => {
                                             onChange={handleChange}
                                             className="sr-only"
                                         />
-                                        <span className="text-2xl mr-2">
-                                            🚭
-                                        </span>
+                                        <FontAwesomeIcon
+                                            icon={faBan}
+                                            className="text-2xl mr-2"
+                                        />
                                         <span className="font-medium">
                                             Tidak
                                         </span>
@@ -262,7 +291,11 @@ const Predict = () => {
                                     htmlFor="region"
                                     className="block text-sm font-semibold text-gray-700 mb-2"
                                 >
-                                    Region 🌍
+                                    <FontAwesomeIcon
+                                        icon={faEarthAmericas}
+                                        className="mr-2"
+                                    />
+                                    Region
                                 </label>
                                 <select
                                     id="region"
@@ -286,9 +319,17 @@ const Predict = () => {
                                     disabled={loading}
                                     className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {loading
-                                        ? "Memproses..."
-                                        : "🔮 Prediksi Sekarang"}
+                                    {loading ? (
+                                        "Memproses..."
+                                    ) : (
+                                        <>
+                                            <FontAwesomeIcon
+                                                icon={faWandMagicSparkles}
+                                                className="mr-2"
+                                            />
+                                            Prediksi Sekarang
+                                        </>
+                                    )}
                                 </button>
                                 <button
                                     type="button"
@@ -307,9 +348,10 @@ const Predict = () => {
                             <>
                                 <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-8 text-white">
                                     <div className="text-center">
-                                        <span className="text-5xl mb-4 block">
-                                            ✨
-                                        </span>
+                                        <FontAwesomeIcon
+                                            icon={faWandMagicSparkles}
+                                            className="text-5xl mb-4"
+                                        />
                                         <h2 className="text-xl font-semibold mb-2">
                                             Estimasi Biaya Asuransi
                                         </h2>
@@ -385,12 +427,19 @@ const Predict = () => {
                                     onClick={() => navigate("/history")}
                                     className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
                                 >
-                                    📜 Lihat Riwayat
+                                    <FontAwesomeIcon
+                                        icon={faClockRotateLeft}
+                                        className="mr-2"
+                                    />
+                                    Lihat Riwayat
                                 </button>
                             </>
                         ) : (
                             <div className="bg-white rounded-xl shadow-md p-8 border border-gray-100 text-center">
-                                <span className="text-6xl mb-4 block">🔮</span>
+                                <FontAwesomeIcon
+                                    icon={faWandMagicSparkles}
+                                    className="text-6xl mb-4 text-blue-600"
+                                />
                                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                                     Siap untuk Prediksi?
                                 </h3>

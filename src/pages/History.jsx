@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import api from "../utils/axios";
 import Layout from "../components/Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faInbox,
+    faWandMagicSparkles,
+    faMars,
+    faVenus,
+    faSmoking,
+    faBan,
+} from "@fortawesome/free-solid-svg-icons";
 
 const History = () => {
     const [history, setHistory] = useState([]);
@@ -130,9 +139,23 @@ const History = () => {
                                                 Jenis Kelamin
                                             </p>
                                             <p className="font-semibold text-gray-900 capitalize">
-                                                {item.input.sex === "male"
-                                                    ? "👨 Pria"
-                                                    : "👩 Wanita"}
+                                                {item.input.sex === "male" ? (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faMars}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Pria
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faVenus}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Wanita
+                                                    </>
+                                                )}
                                             </p>
                                         </div>
                                         <div>
@@ -140,9 +163,23 @@ const History = () => {
                                                 Perokok
                                             </p>
                                             <p className="font-semibold text-gray-900">
-                                                {item.input.smoker === "yes"
-                                                    ? "🚬 Ya"
-                                                    : "🚭 Tidak"}
+                                                {item.input.smoker === "yes" ? (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faSmoking}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Ya
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faBan}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Tidak
+                                                    </>
+                                                )}
                                             </p>
                                         </div>
                                         <div>
@@ -159,7 +196,10 @@ const History = () => {
                         ))
                     ) : (
                         <div className="bg-white rounded-xl shadow-md p-12 text-center border border-gray-100">
-                            <span className="text-6xl mb-4 block">📭</span>
+                            <FontAwesomeIcon
+                                icon={faInbox}
+                                className="text-6xl mb-4 text-gray-400"
+                            />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">
                                 Belum Ada Riwayat
                             </h3>
@@ -170,7 +210,11 @@ const History = () => {
                                 href="/predict"
                                 className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
                             >
-                                🔮 Buat Prediksi Pertama
+                                <FontAwesomeIcon
+                                    icon={faWandMagicSparkles}
+                                    className="mr-2"
+                                />
+                                Buat Prediksi Pertama
                             </a>
                         </div>
                     )}

@@ -1,5 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faChartLine,
+    faWandMagicSparkles,
+    faClockRotateLeft,
+    faUser,
+    faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Layout = ({ children }) => {
     const location = useLocation();
@@ -12,10 +20,10 @@ const Layout = ({ children }) => {
     };
 
     const navItems = [
-        { path: "/dashboard", label: "Dashboard", icon: "📊" },
-        { path: "/predict", label: "Prediksi", icon: "🔮" },
-        { path: "/history", label: "Riwayat", icon: "📜" },
-        { path: "/profile", label: "Profile", icon: "👤" },
+        { path: "/dashboard", label: "Dashboard", icon: faChartLine },
+        { path: "/predict", label: "Prediksi", icon: faWandMagicSparkles },
+        { path: "/history", label: "Riwayat", icon: faClockRotateLeft },
+        { path: "/profile", label: "Profile", icon: faUser },
     ];
 
     return (
@@ -66,7 +74,10 @@ const Layout = ({ children }) => {
                                             : "text-gray-700 hover:bg-gray-100"
                                     }`}
                                 >
-                                    <span className="text-xl">{item.icon}</span>
+                                    <FontAwesomeIcon
+                                        icon={item.icon}
+                                        className="text-lg w-5"
+                                    />
                                     <span className="font-medium">
                                         {item.label}
                                     </span>
@@ -81,7 +92,10 @@ const Layout = ({ children }) => {
                             onClick={handleLogout}
                             className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         >
-                            <span className="text-xl">🚪</span>
+                            <FontAwesomeIcon
+                                icon={faRightFromBracket}
+                                className="text-lg w-5"
+                            />
                             <span className="font-medium">Logout</span>
                         </button>
                     </div>

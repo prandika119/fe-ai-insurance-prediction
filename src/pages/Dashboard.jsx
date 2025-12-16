@@ -1,6 +1,19 @@
 import { useState, useEffect } from "react";
 import api from "../utils/axios";
 import Layout from "../components/Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faChartLine,
+    faDollarSign,
+    faBullseye,
+    faGlobe,
+    faWandMagicSparkles,
+    faSmoking,
+    faBan,
+    faMars,
+    faVenus,
+    faHand,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
     const [dashboardData, setDashboardData] = useState(null);
@@ -55,7 +68,8 @@ const Dashboard = () => {
                 {/* Header */}
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
                     <h1 className="text-3xl font-bold">
-                        Welcome back, {user_data?.username}! 👋
+                        Welcome back, {user_data?.username}!{" "}
+                        <FontAwesomeIcon icon={faHand} className="inline" />
                     </h1>
                     <p className="text-blue-100 mt-2">{user_data?.full_name}</p>
                     <div className="mt-4 flex items-center gap-4">
@@ -82,7 +96,10 @@ const Dashboard = () => {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                <span className="text-2xl">📊</span>
+                                <FontAwesomeIcon
+                                    icon={faChartLine}
+                                    className="text-2xl text-blue-600"
+                                />
                             </div>
                         </div>
                     </div>
@@ -98,7 +115,10 @@ const Dashboard = () => {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                <span className="text-2xl">💰</span>
+                                <FontAwesomeIcon
+                                    icon={faDollarSign}
+                                    className="text-2xl text-green-600"
+                                />
                             </div>
                         </div>
                     </div>
@@ -114,7 +134,10 @@ const Dashboard = () => {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                <span className="text-2xl">🎯</span>
+                                <FontAwesomeIcon
+                                    icon={faBullseye}
+                                    className="text-2xl text-purple-600"
+                                />
                             </div>
                         </div>
                     </div>
@@ -131,7 +154,10 @@ const Dashboard = () => {
                                 </p>
                             </div>
                             <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                                <span className="text-2xl">🌍</span>
+                                <FontAwesomeIcon
+                                    icon={faGlobe}
+                                    className="text-2xl text-orange-600"
+                                />
                             </div>
                         </div>
                     </div>
@@ -153,9 +179,10 @@ const Dashboard = () => {
                                     >
                                         <div className="flex items-center gap-3">
                                             <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                                <span className="text-lg">
-                                                    🔮
-                                                </span>
+                                                <FontAwesomeIcon
+                                                    icon={faWandMagicSparkles}
+                                                    className="text-lg text-blue-600"
+                                                />
                                             </div>
                                             <div>
                                                 <p className="font-semibold text-gray-900">
@@ -227,9 +254,23 @@ const Dashboard = () => {
                                     <div key={key}>
                                         <div className="flex justify-between mb-2">
                                             <span className="text-gray-700 capitalize">
-                                                {key === "yes"
-                                                    ? "🚬 Perokok"
-                                                    : "🚭 Tidak Merokok"}
+                                                {key === "yes" ? (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faSmoking}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Perokok
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faBan}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Tidak Merokok
+                                                    </>
+                                                )}
                                             </span>
                                             <span className="font-semibold text-gray-900">
                                                 {value}
@@ -263,9 +304,23 @@ const Dashboard = () => {
                                     <div key={key}>
                                         <div className="flex justify-between mb-2">
                                             <span className="text-gray-700 capitalize">
-                                                {key === "male"
-                                                    ? "👨 Pria"
-                                                    : "👩 Wanita"}
+                                                {key === "male" ? (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faMars}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Pria
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            icon={faVenus}
+                                                            className="mr-1"
+                                                        />{" "}
+                                                        Wanita
+                                                    </>
+                                                )}
                                             </span>
                                             <span className="font-semibold text-gray-900">
                                                 {value}

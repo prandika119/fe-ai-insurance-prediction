@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import api from "../utils/axios";
 import Layout from "../components/Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faPenToSquare,
+    faFloppyDisk,
+    faShield,
+    faCircleCheck,
+    faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
     const [profile, setProfile] = useState(null);
@@ -170,7 +178,11 @@ const Profile = () => {
                                     onClick={() => setEditing(true)}
                                     className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
                                 >
-                                    ✏️ Edit Profile
+                                    <FontAwesomeIcon
+                                        icon={faPenToSquare}
+                                        className="mr-2"
+                                    />
+                                    Edit Profile
                                 </button>
                             </div>
                         ) : (
@@ -219,9 +231,17 @@ const Profile = () => {
                                         disabled={saving}
                                         className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        {saving
-                                            ? "Menyimpan..."
-                                            : "💾 Simpan Perubahan"}
+                                        {saving ? (
+                                            "Menyimpan..."
+                                        ) : (
+                                            <>
+                                                <FontAwesomeIcon
+                                                    icon={faFloppyDisk}
+                                                    className="mr-2"
+                                                />
+                                                Simpan Perubahan
+                                            </>
+                                        )}
                                     </button>
                                     <button
                                         type="button"
@@ -239,14 +259,20 @@ const Profile = () => {
                 {/* Additional Info Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 text-center">
-                        <span className="text-4xl mb-3 block">🔐</span>
+                        <FontAwesomeIcon
+                            icon={faShield}
+                            className="text-4xl mb-3 text-blue-600"
+                        />
                         <h3 className="font-semibold text-gray-900 mb-1">
                             Keamanan
                         </h3>
                         <p className="text-sm text-gray-600">Akun Anda aman</p>
                     </div>
                     <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 text-center">
-                        <span className="text-4xl mb-3 block">✅</span>
+                        <FontAwesomeIcon
+                            icon={faCircleCheck}
+                            className="text-4xl mb-3 text-green-600"
+                        />
                         <h3 className="font-semibold text-gray-900 mb-1">
                             Terverifikasi
                         </h3>
@@ -255,7 +281,10 @@ const Profile = () => {
                         </p>
                     </div>
                     <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100 text-center">
-                        <span className="text-4xl mb-3 block">⭐</span>
+                        <FontAwesomeIcon
+                            icon={faStar}
+                            className="text-4xl mb-3 text-yellow-500"
+                        />
                         <h3 className="font-semibold text-gray-900 mb-1">
                             Member
                         </h3>
