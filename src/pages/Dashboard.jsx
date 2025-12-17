@@ -146,7 +146,7 @@ const Dashboard = () => {
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-gray-500 text-sm">
-                                    Global Average
+                                    Rata-rata Prediksi Global
                                 </p>
                                 <p className="text-3xl font-bold text-gray-900 mt-2">
                                     {global_stats?.average_charges_global ||
